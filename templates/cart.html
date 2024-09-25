@@ -1,0 +1,73 @@
+{% extends "main.html" %}
+{% block main %}
+
+<style>
+    
+    body {
+    background: radial-gradient(circle, white, #feb47b);
+}
+.cart-header {
+    text-align: right; /* Center the header */
+    font-size: 2em; /* Increase the font size */
+    margin-bottom: 20px; /* Add some space below the header */
+    color: #333; /* Change text color */
+    font-weight: bold; /* Make it bold */
+}
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <h2 class="cart-header">Your Cart</h2>  <!-- Added a class for styling -->
+
+    {% if messages %}
+        <div class="messages text-center">  <!-- Center the message -->
+            {% for message in messages %}
+                <div class="alert alert-success highlighted-message">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if cart_items %}
+        {% for item in cart_items %}
+        <div>
+            <img src="{{ item.image }}" alt="{{ item.name }}" style="width: 150px; height: auto;">
+            <h3>{{ item.name }}</h3>
+            <p>Price: ${{ item.price }}</p>
+            <p>Quantity: {{ item.quantity }}</p>
+        </div>
+        {% endfor %}
+         <div class="total-amount-container">
+            <p class="total-amount">Total: ${{ total }}</p>
+        </div>
+
+        <a href="{% url 'clear_cart' %}" class="boxed-btn3">Clear Cart</a>
+        <a href="{% url 'order_now' %}" class="boxed-btn3">Place Order</a>
+    {% else %}
+        
+    {% endif %}
+</div>
+
+
+
+
+
+
+{% endblock main %}
+
+
+{% block footer %} {% endblock footer %}
+
+

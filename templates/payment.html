@@ -1,0 +1,133 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block main %}
+
+
+<style>
+  body {
+    background: radial-gradient(circle, white, #feb47b);
+}
+</style>
+
+
+<form method="POST" action="{% url 'payment' %}">
+    {% csrf_token %}
+    <!-- Payment Section -->
+    <section class="payment_w3ls py-5">
+        <div class="container">
+            <div class="privacy about">
+                <h5 class="head_agileinfo text-center text-capitalize pb-5">
+                    <span>P</span>ayment Details
+                </h5>
+
+                <div class="tab4">
+                    <div class="pay_info">
+                        <div class="row">
+                            <div class="col-md-6 tab-grid">
+                                <img class="pp-img" style="width:400px" src="{% static 'img/web/paypal.png' %}"
+                                    alt="PayPal Image">
+                                <h5 class="head_agileinfo text-center text-capitalize pb-5">
+                                    <p class="total-amount">Total: ${{ total_price }}</p>
+                                </h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="creditly-card-form shopf-sear-headinfo_form">
+                                    <section class="creditly-wrapper payf_wrapper">
+                                        <div class="credit-card-wrapper">
+                                            <div class="first-row form-group">
+                                                <div class="controls">
+                                                    <label class="control-label">Card Holder</label>
+                                                    <input class="billing-address-name form-control" type="text"
+                                                        autocomplete="off" name="name" placeholder="Username" required>
+                                                </div>
+                                                <div class="paymntf_card_number_grids">
+                                                    <div class="fpay_card_number_grid_left">
+                                                        <div class="controls">
+                                                            <label class="control-label">Card Number</label>
+                                                            <input class="number credit-card-number form-control"
+                                                                type="text" name="number" inputmode="numeric"
+                                                                autocomplete="cc-number" required
+                                                                placeholder="&#149;&#149;&#149;&#149; &#149;&#149;&#149;&#149; &#149;&#149;&#149;&#149; &#149;&#149;&#149;&#149;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="fpay_card_number_grid_right">
+                                                        <div class="controls">
+                                                            <label class="control-label">CVV</label>
+                                                            <input class="security-code form-control" pattern="^[0-9]{3}"
+                                                                required type="password" name="security-code"
+                                                                placeholder="CVV">
+                                                        </div>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+
+                                                <label>Expiration Month</label>
+                                                <select class="form-control" name="expiry_month" required>
+                                                    <option value="01">January</option>
+                                                    <option value="02">February</option>
+                                                    <option value="03">March</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">May</option>
+                                                    <option value="06">June</option>
+                                                    <option value="07">July</option>
+                                                    <option value="08">August</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+
+                                                <label>Expiration Year</label>
+                                                <select class="form-control" name="expiry_year" required>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
+                                                    <option value="2026">2026</option>
+                                                    <option value="2026">2027</option>
+                                                    <option value="2026">2028</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Hidden field for total amount -->
+                                    <input type="hidden" name="total_price" value="{{ total_price }}">
+                                    <a href="payment_success/" class="btn btn-primary submit" >Proceed Payment</a>
+                                    <!-- <input class="btn btn-primary submit" type="submit" name="btnSubmit" value="Proceed Payment"> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+
+{% if messages %}
+    {% for msg in messages %}
+    <script>alert('{{msg}}');</script>
+    {% endfor %}
+{% endif %}
+<script src="{% static 'web/js/jquery-2.2.3.min.js' %}"></script>
+<script src="{% static 'web/js/creditly.js' %}"></script>
+<link rel="stylesheet" href="{% static 'web/css/creditly.css' %}" type="text/css" media="all" />
+
+<script>
+    $(function () {
+        var creditly = Creditly.initialize(
+            '.creditly-wrapper .expiration-month-and-year',
+            '.creditly-wrapper .credit-card-number',
+            '.creditly-wrapper .security-code',
+            '.creditly-wrapper .card-type');
+
+        $(".creditly-card-form .submit").click(function (e) {
+            e.preventDefault();
+            var output = creditly.validate();
+            if (output) {
+                console.log(output);
+            }
+        });
+    });
+</script>
+{% endblock main %}
+
+{% block footer%}  {% endblock footer%}

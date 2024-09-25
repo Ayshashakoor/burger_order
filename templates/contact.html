@@ -1,0 +1,92 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block main %}
+
+<!-- bradcam_area_start -->
+<div class="bradcam_area breadcam_bg_2">
+    <h3></h3>
+</div>    
+
+<!-- Contact Form Section -->
+<div class="container" style="padding: 60px 0;">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="contact-title" style="text-align: center; color: #343a40; margin-bottom: 40px;">Get in Touch</h2>
+        </div>
+        <div class="col-lg-8">
+            <!-- Contact Form -->
+            <form action="{% url 'contact' %}" method="POST" id="contactForm" style="background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                {% csrf_token %}
+                
+                <!-- Displaying Messages -->
+                {% if messages %}
+                    <div class="alert alert-success" role="alert">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Name Input -->
+                <div class="form-group">
+                    <input class="form-control" name="name" id="name" type="text" required placeholder="Enter your name" style="padding: 10px; border-radius: 4px; border: 1px solid #ced4da;">
+                </div>
+
+                <!-- Email Input -->
+                <div class="form-group">
+                    <input class="form-control" name="email" id="email" type="email" required placeholder="Email" style="padding: 10px; border-radius: 4px; border: 1px solid #ced4da;">
+                </div>
+
+                <!-- Message Input -->
+                <div class="form-group">
+                    <textarea class="form-control" name="message" required placeholder="Enter your message" style="padding: 10px; border-radius: 4px; border: 1px solid #ced4da; height: 150px;"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group" style="text-align: center;">
+                    <button type="submit" class="btn btn-primary" style="background-color: #ff8400; border: none; padding: 10px 20px; border-radius: 4px; color: #fff;">Send</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Contact Information Section -->
+        <div class="col-lg-3 offset-lg-1">
+            <!-- Address Info -->
+            <div class="media contact-info" style="margin-bottom: 20px;">
+                <span class="contact-info__icon" style="font-size: 2rem; margin-right: 15px;"><i class="ti-home"></i></span>
+                <div class="media-body">
+                    <h3 style="margin-bottom: 5px;">Buttonwood, California.</h3>
+                    <p>Rosemead, CA 91770</p>
+                </div>
+            </div>
+
+            <!-- Phone Info -->
+            <div class="media contact-info" style="margin-bottom: 20px;">
+                <span class="contact-info__icon" style="font-size: 2rem; margin-right: 15px;"><i class="ti-tablet"></i></span>
+                <div class="media-body">
+                    <h3 style="margin-bottom: 5px;">+1 253 565 2365</h3>
+                    <p>Mon to Fri 9am to 6pm</p>
+                </div>
+            </div>
+
+            <!-- Email Info -->
+            <div class="media contact-info">
+                <span class="contact-info__icon" style="font-size: 2rem; margin-right: 15px;"><i class="ti-email"></i></span>
+                <div class="media-body">
+                    <h3 style="margin-bottom: 5px;">support@colorlib.com</h3>
+                    <p>Send us your query anytime!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block script %}
+<!-- Add custom JavaScript here if needed -->
+{% endblock script %}
+
+{% endblock main %}
+
+{% block footer %} 
+<!-- Custom footer content can be added here -->
+{% endblock footer %}

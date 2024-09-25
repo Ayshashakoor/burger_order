@@ -1,0 +1,189 @@
+{%extends 'main.html'%}
+{%load static%}
+{%block main %}
+<body>
+    <!-- bradcam_area_start -->
+    <div class="bradcam_area breadcam_bg overlay">
+        <h3></h3>
+    </div>
+    <!-- bradcam_area_end -->
+
+    <div class="best_burgers_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title text-center mb-80">
+                        <span>Burger Menu</span>
+                        <h3>Best Ever Burgers</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Menu-->
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <a href="/menu">
+                            <div class="single_delicious d-flex flex-column align-items-center justify-content-center">
+                                <div class="thumb">
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid img-aligned">
+                                </div>
+                                <div class="info text-center">
+                                    <h3>{{ product.name }}</h3>
+                                    <p>{{ product.description }}</p>
+                                    <span>${{ product.price }}</span>
+                                    <a href="{% url 'add_to_cart' product.id %}" class="boxed-btn3">Add to Cart</a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            
+               
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="iteam_links">
+                        <a class="boxed-btn5" href="{% url 'menu' %}">View Full Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- best_burgers_area_end -->
+
+    
+    <!-- testimonial_area_start  -->
+    <div class="testimonial_area ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title mb-60 text-center">
+                        <span>Testimonials</span>
+                        <h3>Happy Customers</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="testmonial_active owl-carousel">
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
+                                            sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec
+                                            sed
+                                            neque.</p>
+                                        <div class="testmonial_author">
+                                            <div class="thumb">
+                                                <img src="{%static 'img/testmonial/1.png' %}" alt="">
+                                            </div>
+                                            <h4>Kristiana Chouhan</h4>
+                                            <div class="stars">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
+                                            sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec
+                                            sed
+                                            neque.</p>
+                                        <div class="testmonial_author">
+                                            <div class="thumb">
+                                                <img src="{%static 'img/testmonial/2.png'%}" alt="">
+                                            </div>
+                                            <h4>Arafath Hossain</h4>
+                                            <div class="stars">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
+                                            sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec
+                                            sed
+                                            neque.</p>
+                                        <div class="testmonial_author">
+                                            <div class="thumb">
+                                                <img src="{%static 'img/testmonial/3.png'%}" alt="">
+                                            </div>
+                                            <h4>A.H Shemanto</h4>
+                                            <div class="stars">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- testimonial_area_ned  -->
+
+    
+
+    
+
+    <!--JS here -->
+    <!-- <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script> -->
+
+    <!--contact js-->
+    <!-- <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
+
+    <script src="js/main.js"></script> -->
+
+{%endblock main%}
+
+</body>
+
+</html>

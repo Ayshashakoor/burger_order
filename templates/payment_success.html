@@ -1,0 +1,51 @@
+<!-- payment_success.html -->
+{% extends 'main.html' %}
+{% block main %}
+
+
+<style>
+
+body {
+    background: linear-gradient(to right, white, #feb47b);
+}
+
+    .payment_success_area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;  /* Vertically center */
+        align-items: center;      /* Horizontally center */
+        min-height: 100vh;        /* Full page height */
+        text-align: center;       /* Center text */
+    }
+    
+    .boxed-btn3 {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #28a745; /* Green button */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .boxed-btn3:hover {
+        background-color: #218838; /* Darker green on hover */
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<div class="payment_success_area">
+    <h2>Payment Successful</h2>
+    <p>Thank you for your order!</p>
+    <h3>Total Amount Paid: ${{ total_price }}</h3>
+    <a href="{% url 'menu' %}" class="boxed-btn3">Back to Menu</a>
+</div>
+{% endblock %}
+
+{% block footer%}  {% endblock footer%}
